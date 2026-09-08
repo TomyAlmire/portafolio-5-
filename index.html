@@ -37,13 +37,13 @@ main{padding:52px 0 90px}
 .phone-frame{position:relative;width:300px;height:620px;background:#0a0a0a;border-radius:44px;padding:11px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55),0 0 0 2px var(--line)}
 .phone-frame::before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:110px;height:24px;background:#0a0a0a;border-radius:0 0 16px 16px;z-index:3}
 .phone-screen{width:100%;height:100%;border-radius:33px;overflow:hidden;background:#fff;position:relative}
-.phone-screen iframe{width:394px;height:847px;border:0;display:block;zoom:.706}
+.phone-screen iframe{width:394px;height:847px;border:0;display:block;transform:scale(.706);transform-origin:top left}
 .browser-frame{width:864px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);box-shadow:0 30px 60px -25px rgba(0,0,0,.5)}
 .browser-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--bg2);border-bottom:1px solid var(--line)}
 .dot{width:11px;height:11px;border-radius:50%;background:#3a3f4a}
 .browser-url{flex:1;margin-left:10px;font-size:11.5px;color:var(--mut);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .browser-view{height:540px;overflow:hidden;background:#fff}
-.browser-view iframe{width:1440px;height:900px;border:0;display:block;zoom:.6}
+.browser-view iframe{width:1440px;height:900px;border:0;display:block;transform:scale(.6);transform-origin:top left}
 .scrollnote{font-size:12px;color:var(--mut);margin-top:10px;display:flex;align-items:flex-start;gap:7px}
 footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-size:13px;text-align:center}
 @media(max-width:880px){.browser-view{height:720px}.browser-view iframe{height:1180px}}
