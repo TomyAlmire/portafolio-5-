@@ -10541,24 +10541,28 @@ body[data-page="productos-premium"] .cart-empty {
 })();
 <\/script></body></html></script><script>
 (function(){
-  var cache={};
   function bundle(id){
-    if(cache[id]) return cache[id];
-    var raw=document.getElementById('bd-'+id).textContent;
-    raw=raw.split('<\\/script').join('<'+'/script');
-    cache[id]=raw; return raw;
-  }
-  function load(f){
-    if(f.dataset.loaded) return; f.dataset.loaded='1';
-    f.srcdoc=bundle(f.dataset.bd);
+    return document.getElementById('bd-'+id).textContent.split('<\\/script').join('<'+'/script');
   }
   var frames=[].slice.call(document.querySelectorAll('iframe[data-bd]'));
-  // eager-load whatever is near the viewport, then stagger the rest
-  function nearby(f){var r=f.getBoundingClientRect();return r.top<innerHeight*2.5 && r.bottom>-innerHeight;}
-  function pass(){frames.forEach(function(f){if(nearby(f))load(f);});}
-  pass();
-  addEventListener('scroll',pass,{passive:true});
-  var i=0;(function next(){if(i>=frames.length)return;load(frames[i++]);setTimeout(next,450);})();
+  function load(f){ if(f.dataset.st==='1')return; f.dataset.st='1'; f.srcdoc=bundle(f.dataset.bd); }
+  function unload(f){ if(f.dataset.st!=='1')return; f.dataset.st=''; f.removeAttribute('srcdoc'); }
+  // virtualise: keep only the iframes near the viewport alive (prevents mobile OOM / crash on fast scroll)
+  var raf=0;
+  function update(){
+    raf=0;
+    var vh=innerHeight||800;
+    for(var k=0;k<frames.length;k++){
+      var f=frames[k], r=f.getBoundingClientRect();
+      if(r.bottom>-vh*0.9 && r.top<vh*1.7){ load(f); }
+      else if(r.bottom<-vh*2.6 || r.top>vh*3.4){ unload(f); }
+    }
+  }
+  function schedule(){ if(raf)return; raf=1; (window.requestAnimationFrame||function(cb){setTimeout(cb,16);})(update); }
+  update();
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',schedule);
+  setInterval(update,600);
 
   // scale each device mockup to fit its column (keeps desktop preview from being cut on phones)
   function fitStages(){
