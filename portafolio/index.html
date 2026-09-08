@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Muestras de trabajo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c0f;--bg2:#111318;--card:#15181e;--line:#262a33;--tx:#eef0f4;--mut:#9aa1ad;--acc:#c9a24b}
+:root[data-theme="light"]{--bg:#f4f5f7;--bg2:#fff;--card:#fff;--line:#e2e5ea;--tx:#1a1d23;--mut:#5a616d}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;max-width:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header.top{padding:72px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(1000px 400px at 15% -10%,rgba(110,168,254,.10),transparent 60%),radial-gradient(900px 380px at 100% 0%,rgba(201,162,75,.10),transparent 55%)}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:18px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em}
+.lead{font-size:clamp(1rem,1.6vw,1.15rem);color:var(--mut);max-width:660px;margin:0}
+.hint{margin-top:26px;display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:8px 16px;background:var(--bg2)}
+main{padding:52px 0 90px}
+.project{padding:44px 0;border-bottom:1px solid var(--line)}
+.project:last-child{border-bottom:0}
+.p-cat{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.p-name{font-family:Fraunces,Georgia,serif;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;margin:4px 0 0}
+.p-desc{color:var(--mut);max-width:700px;margin:10px 0 0;font-size:.97rem}
+.p-live{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:13px;font-weight:600;color:var(--bg);background:var(--acc);text-decoration:none;padding:9px 16px;border-radius:8px}
+.p-live:hover{filter:brightness(1.08)}
+.devices{display:grid;grid-template-columns:320px minmax(0,1fr);gap:34px;margin-top:28px;align-items:start}
+@media(max-width:880px){.devices{grid-template-columns:1fr;gap:32px}}
+.label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.label::after{content:"";flex:1;height:1px;background:var(--line)}
+.phone,.browser{min-width:0;max-width:100%}
+.stage{overflow:hidden;max-width:100%;position:relative}
+.stage>*{transform-origin:top left}
+.phone-frame{position:relative;width:300px;height:620px;background:#0a0a0a;border-radius:44px;padding:11px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55),0 0 0 2px var(--line)}
+.phone-frame::before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:110px;height:24px;background:#0a0a0a;border-radius:0 0 16px 16px;z-index:3}
+.phone-screen{width:100%;height:100%;border-radius:33px;overflow:hidden;background:#f3f3f4;position:relative}
+.phone-screen iframe{width:394px;height:847px;border:0;display:block;transform:scale(.706);transform-origin:top left}
+.browser-frame{width:864px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);box-shadow:0 30px 60px -25px rgba(0,0,0,.5)}
+.browser-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--bg2);border-bottom:1px solid var(--line)}
+.dot{width:11px;height:11px;border-radius:50%;background:#3a3f4a}
+.browser-url{flex:1;margin-left:10px;font-size:11.5px;color:var(--mut);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:5px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser-view{height:540px;overflow:hidden;background:#f3f3f4;position:relative}
+.browser-view iframe{width:1200px;height:760px;border:0;display:block;transform:scale(.72);transform-origin:top left}
+iframe[data-bd]:not([src]):not([srcdoc]),iframe[data-bd][src="about:blank"]{visibility:hidden}
+.phone-screen::after,.browser-view::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,#ececed 0 12px,#f5f5f6 12px 24px);opacity:0;transition:opacity .2s;pointer-events:none}
+.stage.pending .phone-screen::after,.stage.pending .browser-view::after{opacity:1}
+.scrollnote{font-size:12px;color:var(--mut);margin-top:10px;display:flex;align-items:flex-start;gap:7px}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-size:13px;text-align:center}
+@media(max-width:880px){.browser-view{height:680px}.browser-view iframe{height:1000px}}
+@media(max-width:600px){.wrap{padding:0 16px}header.top{padding:44px 0 30px}main{padding:38px 0 70px}.project{padding:34px 0}.hint{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="eyebrow">Trabajos</div>
+  <h1>Muestras de trabajo</h1>
+  <p class="lead">Algunos sitios que hice, cada uno en su versi&oacute;n de <strong>celular</strong> y de <strong>escritorio</strong>. Se puede entrar a cada secci&oacute;n desde el men&uacute; y scrollear para ver la p&aacute;gina completa.</p>
+  <div class="hint">Toc&aacute; los men&uacute;s para moverte entre p&aacute;ginas y scrolle&aacute; dentro de cada pantalla.</div>
+</div></header>
+<main><div class="wrap"><section class="project" data-pid="lashes"><span class="p-cat">Beauty studio &middot; Landing multi-p&aacute;gina</span><h2 class="p-name">LASHSTUDIOBYMIRI</h2><p class="p-desc">Estudio de pesta&ntilde;as: inicio, servicios, galer&iacute;a, opiniones, contacto y reserva de turno. Publicado y en l&iacute;nea.</p><a class="p-live" href="https://miriespeche.github.io/LashesByMiri/index.html" target="_blank" rel="noopener">Ver sitio en vivo &rarr;</a><div class="devices"><div class="phone"><div class="label">Celular</div><div class="stage"><div class="phone-frame"><div class="phone-screen"><iframe data-bd="lashes" data-view="m" data-src="sites/lashes.html" title="LASHSTUDIOBYMIRI m&oacute;vil" loading="lazy"></iframe></div></div></div></div><div class="browser"><div class="label">Escritorio</div><div class="stage"><div class="browser-frame"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-url">lashstudiobymiri.com</span></div><div class="browser-view"><iframe data-bd="lashes" data-view="d" data-src="sites/lashes.html" title="LASHSTUDIOBYMIRI escritorio" loading="lazy"></iframe></div></div></div><div class="scrollnote">&#8597; Scrolle&aacute; dentro de la ventana para ver la p&aacute;gina entera</div></div></div></section><section class="project" data-pid="clari"><span class="p-cat">Peluquer&iacute;a, coaching &amp; tarot &middot; 8 p&aacute;ginas</span><h2 class="p-name">CLARI COLOR</h2><p class="p-desc">Peluquer&iacute;a + coaching ontol&oacute;gico + tarot. Est&eacute;tica editorial oscura, galer&iacute;a de trabajos, tienda y formulario de reserva.</p><div class="devices"><div class="phone"><div class="label">Celular</div><div class="stage"><div class="phone-frame"><div class="phone-screen"><iframe data-bd="clari" data-view="m" data-src="sites/clari.html" title="CLARI COLOR m&oacute;vil" loading="lazy"></iframe></div></div></div></div><div class="browser"><div class="label">Escritorio</div><div class="stage"><div class="browser-frame"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-url">claricolor.com.ar</span></div><div class="browser-view"><iframe data-bd="clari" data-view="d" data-src="sites/clari.html" title="CLARI COLOR escritorio" loading="lazy"></iframe></div></div></div><div class="scrollnote">&#8597; Scrolle&aacute; dentro de la ventana para ver la p&aacute;gina entera</div></div></div></section><section class="project" data-pid="espacio"><span class="p-cat">Arte &amp; alojamiento &middot; 7 p&aacute;ginas</span><h2 class="p-name">ESPACIO ROMERO</h2><p class="p-desc">Casa de arte y hospedaje en Buenos Aires: alojamiento, el artista, cat&aacute;logo de obra, tienda, rese&ntilde;as y contacto.</p><div class="devices"><div class="phone"><div class="label">Celular</div><div class="stage"><div class="phone-frame"><div class="phone-screen"><iframe data-bd="espacio" data-view="m" data-src="sites/espacio.html" title="ESPACIO ROMERO m&oacute;vil" loading="lazy"></iframe></div></div></div></div><div class="browser"><div class="label">Escritorio</div><div class="stage"><div class="browser-frame"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-url">espacioromero.ar</span></div><div class="browser-view"><iframe data-bd="espacio" data-view="d" data-src="sites/espacio.html" title="ESPACIO ROMERO escritorio" loading="lazy"></iframe></div></div></div><div class="scrollnote">&#8597; Scrolle&aacute; dentro de la ventana para ver la p&aacute;gina entera</div></div></div></section><section class="project" data-pid="dalmata"><span class="p-cat">Indumentaria custom &middot; 8 p&aacute;ginas</span><h2 class="p-name">D&Aacute;LMATA</h2><p class="p-desc">Remeras y merch personalizado: cat&aacute;logo premium, categor&iacute;as, gu&iacute;a de talles, cuidados, devoluciones y contacto.</p><div class="devices"><div class="phone"><div class="label">Celular</div><div class="stage"><div class="phone-frame"><div class="phone-screen"><iframe data-bd="dalmata" data-view="m" data-src="sites/dalmata.html" title="D&Aacute;LMATA m&oacute;vil" loading="lazy"></iframe></div></div></div></div><div class="browser"><div class="label">Escritorio</div><div class="stage"><div class="browser-frame"><div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-url">dalmata.store</span></div><div class="browser-view"><iframe data-bd="dalmata" data-view="d" data-src="sites/dalmata.html" title="D&Aacute;LMATA escritorio" loading="lazy"></iframe></div></div></div><div class="scrollnote">&#8597; Scrolle&aacute; dentro de la ventana para ver la p&aacute;gina entera</div></div></div></section></div></main><footer><div class="wrap">Muestras de trabajo &middot; dise&ntilde;o + desarrollo web</div></footer><script>
+(function(){
+  var frames=[].slice.call(document.querySelectorAll('iframe[data-bd]'));
+  var sections=[].slice.call(document.querySelectorAll('.project'));
+  var FILE = frames[0] && frames[0].hasAttribute('data-src');
+  var MAXSEC = (innerWidth<900)?1:2;
+  function load(f){
+    if(f.dataset.st==='1')return; f.dataset.st='1';
+    var st=f.closest('.stage'); if(st) st.classList.add('pending');
+    f.addEventListener('load',function(){ var s=f.closest('.stage'); if(s) s.classList.remove('pending'); },{once:true});
+    if(FILE){ f.setAttribute('src', f.getAttribute('data-src')); }
+    else { f.srcdoc = document.getElementById('bd-'+f.dataset.bd).textContent.split('<\\/scr'+'ipt').join('<'+'/scr'+'ipt'); }
+  }
+  function unload(f){
+    if(f.dataset.st!=='1')return; f.dataset.st='';
+    var st=f.closest('.stage'); if(st) st.classList.remove('pending');
+    if(FILE){ f.setAttribute('src','about:blank'); }
+    else { f.removeAttribute('srcdoc'); }
+  }
+  var raf=0;
+  function update(){
+    raf=0;
+    var vh=innerHeight||800;
+    var scored=sections.map(function(sec){
+      var r=sec.getBoundingClientRect();
+      var vis=Math.max(0, Math.min(r.bottom,vh)-Math.max(r.top,0));
+      return {sec:sec,vis:vis};
+    }).sort(function(a,b){return b.vis-a.vis;});
+    var keep=[];
+    for(var i=0;i<scored.length && keep.length<MAXSEC;i++){
+      if(i===0 || scored[i].vis>vh*0.12) keep.push(scored[i].sec);
+    }
+    for(var k=0;k<frames.length;k++){
+      var f=frames[k], ok=false;
+      for(var j=0;j<keep.length;j++){ if(keep[j].contains(f)){ ok=true; break; } }
+      if(ok) load(f); else unload(f);
+    }
+  }
+  function schedule(){ if(raf)return; raf=1; (window.requestAnimationFrame||function(cb){setTimeout(cb,20);})(update); }
+  update();
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',function(){ MAXSEC=(innerWidth<900)?1:2; schedule(); fitStages(); });
+  setInterval(update,500);
+
+  function fitStages(){
+    var stages=document.querySelectorAll('.stage');
+    for(var j=0;j<stages.length;j++){
+      var st=stages[j], fr=st.firstElementChild;
+      if(!fr) continue;
+      fr.style.transform='';
+      var natW=fr.offsetWidth, natH=fr.offsetHeight;
+      var avail=st.clientWidth;
+      var s=(avail>0 && avail<natW)?(avail/natW):1;
+      fr.style.transform=s<1?('scale('+s+')'):'';
+      st.style.height=(natH*s)+'px';
+    }
+  }
+  fitStages();
+  addEventListener('load',fitStages);
+  [150,500,1400,3000].forEach(function(t){setTimeout(fitStages,t);});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitStages);
+})();
+</script>
+</body>
+</html>
